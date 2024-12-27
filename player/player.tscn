@@ -1,20 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v821l"]
+[ext_resource type="Texture2D" uid="uid://3qagxcg2qlrm" path="res://addons/kenney_1-bit-platformer-pack/Tiles/Transparent/tile_0240.png" id="2_ue6ca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw1q3"]
-size = Vector2(32, 48)
-
-[sub_resource type="QuadMesh" id="QuadMesh_k53xo"]
+size = Vector2(12, 11)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v821l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_tw1q3")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(-4.76837e-07, -24)
-scale = Vector2(32, 48)
-mesh = SubResource("QuadMesh_k53xo")
+[node name="Tile0240" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_ue6ca")

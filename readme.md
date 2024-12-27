@@ -12,3 +12,4 @@ Theme: Polarity
 
 [Godot 4.3](https://godotengine.org/)
 [Phantom Camera](https://phantom-camera.dev/core-nodes/phantom-camera-2d)
+[Kenney's 1-Bit Platformer Pack](https://kenney.nl/assets/1-bit-platformer-pack)
