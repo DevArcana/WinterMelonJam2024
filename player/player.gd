@@ -113,4 +113,14 @@ func _physics_process(delta):
 			if Input.is_action_just_released("fire_blue"):
 				_set_magnet_mode(Magnetism.Polarity.INERT)
 	
+	if velocity.x > EPSILON:
+		%PlayerSprite.play("walk")
+		%PlayerSprite.flip_h = false
+	elif velocity.x < -EPSILON:
+		%PlayerSprite.play("walk")
+		%PlayerSprite.flip_h = true
+	else:
+		%PlayerSprite.play("default")
+		%PlayerSprite.flip_h = false
+	
 	move_and_slide()

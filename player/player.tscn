@@ -1,10 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://do5n61hi8wdrr"]
+[gd_scene load_steps=20 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v821l"]
-[ext_resource type="Texture2D" uid="uid://3qagxcg2qlrm" path="res://addons/kenney_1-bit-platformer-pack/Tiles/Transparent/tile_0240.png" id="2_ue6ca"]
+[ext_resource type="Texture2D" uid="uid://bdyv2uisiksku" path="res://assets/player/player_model0000.png" id="2_eome6"]
+[ext_resource type="Texture2D" uid="uid://cfekfcf07qlhb" path="res://assets/player/player_walking0002.png" id="3_842el"]
 [ext_resource type="Texture2D" uid="uid://bn7lgy730mmwy" path="res://assets/magnet/magnet0000.png" id="3_svcvt"]
+[ext_resource type="Texture2D" uid="uid://vrrkhi7l3dt8" path="res://assets/player/player_walking0003.png" id="4_dyrne"]
 [ext_resource type="Texture2D" uid="uid://omxw4e31x0bj" path="res://assets/magnet/magnet0006.png" id="4_kg6yo"]
+[ext_resource type="Texture2D" uid="uid://dx8ixg63oobnf" path="res://assets/player/player_walking0004.png" id="5_8fbs0"]
 [ext_resource type="Texture2D" uid="uid://dbmblo66rhnuk" path="res://assets/magnet/magnet0005.png" id="5_mx1vm"]
+[ext_resource type="Texture2D" uid="uid://d10trmulmgl22" path="res://assets/player/player_walking0005.png" id="6_wso6q"]
 [ext_resource type="Texture2D" uid="uid://ucs3emas0h22" path="res://assets/magnet/magnet0004.png" id="6_xcolb"]
 [ext_resource type="Texture2D" uid="uid://c6qqbs6f5d3bx" path="res://assets/magnet/magnet0003.png" id="7_3xdtn"]
 [ext_resource type="Texture2D" uid="uid://cdy5htumogsle" path="res://assets/magnet/magnet0002.png" id="8_l1jyu"]
@@ -14,7 +18,35 @@
 [ext_resource type="AudioStream" uid="uid://cgn3vjov5ld26" path="res://player/step.mp3" id="12_phb4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw1q3"]
-size = Vector2(12, 11)
+size = Vector2(13, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14lrl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eome6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_842el")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dyrne")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8fbs0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wso6q")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_40j2s"]
 animations = [{
@@ -77,16 +109,18 @@ animations = [{
 script = ExtResource("1_v821l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5.5)
+position = Vector2(0.5, -8)
 shape = SubResource("RectangleShape2D_tw1q3")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("2_ue6ca")
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.680711, 0.543129, 0.296702, 1)
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_14lrl")
 
 [node name="Magnet" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -5)
+position = Vector2(0.37, -10.345)
 
 [node name="MagnetSprite" type="AnimatedSprite2D" parent="Magnet"]
 unique_name_in_owner = true
