@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://do5n61hi8wdrr"]
+[gd_scene load_steps=15 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v821l"]
 [ext_resource type="Texture2D" uid="uid://3qagxcg2qlrm" path="res://addons/kenney_1-bit-platformer-pack/Tiles/Transparent/tile_0240.png" id="2_ue6ca"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://c6qqbs6f5d3bx" path="res://assets/magnet/magnet0003.png" id="7_3xdtn"]
 [ext_resource type="Texture2D" uid="uid://cdy5htumogsle" path="res://assets/magnet/magnet0002.png" id="8_l1jyu"]
 [ext_resource type="Texture2D" uid="uid://d3eilrpjaxkr7" path="res://assets/magnet/magnet0001.png" id="9_kcbld"]
+[ext_resource type="AudioStream" uid="uid://di00kj02yl8mn" path="res://assets/magnet/effect.mp3" id="10_khece"]
+[ext_resource type="AudioStream" uid="uid://b46xuubge20kt" path="res://player/hop.mp3" id="11_a3jhy"]
+[ext_resource type="AudioStream" uid="uid://cgn3vjov5ld26" path="res://player/step.mp3" id="12_phb4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw1q3"]
 size = Vector2(12, 11)
@@ -95,3 +98,15 @@ speed_scale = 2.0
 unique_name_in_owner = true
 target_position = Vector2(1000, 0)
 collision_mask = 2
+
+[node name="MagnetAudio" type="AudioStreamPlayer" parent="Magnet"]
+unique_name_in_owner = true
+stream = ExtResource("10_khece")
+
+[node name="PlayerAudioHop" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_a3jhy")
+
+[node name="PlayerAudioStep" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_phb4q")

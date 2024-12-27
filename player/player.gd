@@ -4,6 +4,7 @@ var dir : float = 0.0
 var magnet_mode : Magnetism.Polarity = Magnetism.Polarity.INERT
 var magnet_target : Vector2 = Vector2.ZERO
 var magnet_push : bool = false
+var step_timer = 0.0
 
 const EPSILON = 0.001
 const JUMP_VELOCITY = 400.0
@@ -13,6 +14,7 @@ const GROUND_DECEL = 200.0
 const GROUND_FRICTION = 3.0
 const AIR_FRICTION = 0.5
 const MAGNET_FORCE = 300.0
+const STEP_INTERVAL = 1.0
 
 func _set_magnet_mode(mode: Magnetism.Polarity, target_polarity: Magnetism.Polarity = Magnetism.Polarity.INERT, target: Vector2 = Vector2.ZERO):
 	magnet_mode = mode
@@ -22,17 +24,24 @@ func _set_magnet_mode(mode: Magnetism.Polarity, target_polarity: Magnetism.Polar
 	if magnet_mode == Magnetism.Polarity.INERT:
 		%MagnetSprite.modulate = Color.WHITE
 		%MagnetSprite.play("default")
+		%MagnetAudio.stop()
 	elif magnet_mode == Magnetism.Polarity.RED:
 		%MagnetSprite.modulate = Color.RED
 		%MagnetSprite.play("pull")
+		%MagnetAudio.play()
 	elif magnet_mode == Magnetism.Polarity.BLUE:
 		%MagnetSprite.modulate = Color.BLUE
 		%MagnetSprite.play("push")
+		%MagnetAudio.play()
 
 func _apply_magnet_force(delta):
-	var magnet_dir = (magnet_target - global_position).normalized()
+	var diff = magnet_target - global_position
+	var dist = diff.length()
+	var magnet_dir = diff.normalized()
 	if magnet_push:
 		magnet_dir = -magnet_dir
+	
+	%MagnetAudio.pitch_scale = clamp((dist / 400) + 0.7, 0.7, 1.0)
 	velocity = magnet_dir * MAGNET_FORCE
 
 func _physics_ground(delta):
@@ -50,6 +59,14 @@ func _physics_ground(delta):
 	if speed > 0.0:
 		new_speed /= speed
 	velocity.x *= new_speed
+	
+	if is_zero_approx(velocity.x):
+		step_timer = 0.0
+	else:
+		step_timer -= abs(velocity.x) * 0.03 * delta
+		if step_timer <= 0.0:
+			step_timer = STEP_INTERVAL
+			%PlayerAudioStep.play()
 
 func _physics_air(delta):
 	# Apply gravity
@@ -68,8 +85,9 @@ func _physics_process(delta):
 	dir = Input.get_axis("left", "right")
 	
 	if is_on_floor():
-		if Input.is_action_just_pressed("jump"):
+		if velocity.y >= 0.0 and Input.is_action_just_pressed("jump"):
 			velocity.y -= JUMP_VELOCITY
+			%PlayerAudioHop.play()
 		
 		_physics_ground(delta)
 	else:
