@@ -1,61 +1,52 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
-const JUMP_VELOCITY = -250.0
-const MAGNET_FORCE = 5000.0
+var dir : float = 0.0
 
-enum MagnetMode {INACTIVE, RED, BLUE}
-var magnet_mode : MagnetMode = MagnetMode.INACTIVE
+const EPSILON = 0.001
+const JUMP_VELOCITY = 400.0
+const GROUND_MAX_SPEED = 200.0
+const GROUND_ACCEL = 1200.0
+const GROUND_DECEL = 200.0
+const GROUND_FRICTION = 3.0
+const AIR_FRICTION = 0.5
 
-func switch_magnet_mode(mode: MagnetMode):
-	if mode == magnet_mode:
-		return
-		
-	magnet_mode = mode
-		
-	if magnet_mode == MagnetMode.INACTIVE:
-		%MagnetSprite.modulate = Color.WHITE
-	elif magnet_mode == MagnetMode.RED:
-		%MagnetSprite.modulate = Color.RED
-	elif magnet_mode == MagnetMode.BLUE:
-		%MagnetSprite.modulate = Color.BLUE
-
-func _process(delta):
-	%Magnet.look_at(get_global_mouse_position())
+func _physics_ground(delta):
+	# Apply input
+	var speed = abs(velocity.x)
+	var remaining = GROUND_MAX_SPEED - speed
+	if remaining > 0:
+		var dx = delta * GROUND_ACCEL
+		velocity.x += min(dx, remaining) * dir
 	
-	if Input.is_action_just_pressed("fire_blue"):
-		switch_magnet_mode(MagnetMode.BLUE)
-	elif Input.is_action_just_pressed("fire_red"):
-		switch_magnet_mode(MagnetMode.RED)
-	elif Input.is_action_just_released("fire_blue") and magnet_mode == MagnetMode.BLUE:
-		switch_magnet_mode(MagnetMode.INACTIVE)
-	elif Input.is_action_just_released("fire_red") and magnet_mode == MagnetMode.RED:
-		switch_magnet_mode(MagnetMode.INACTIVE)
+	# Apply friction
+	speed = abs(velocity.x)
+	var drop = max(speed, GROUND_DECEL) * GROUND_FRICTION * delta
+	var new_speed = max(speed - drop, 0.0)
+	if speed > 0.0:
+		new_speed /= speed
+	velocity.x *= new_speed
+
+func _physics_air(delta):
+	# Apply gravity
+	velocity += get_gravity() * delta
+	
+	# Apply friction
+	var speed = velocity.length()
+	var drop = speed * AIR_FRICTION * delta
+	var new_speed = max(speed - drop, 0.0)
+	if speed > 0.0:
+		new_speed /= speed
+	velocity *= new_speed
 
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
+	dir = Input.get_axis("left", "right")
+	
+	if is_on_floor():
+		if Input.is_action_just_pressed("jump"):
+			velocity.y -= JUMP_VELOCITY
+		
+		_physics_ground(delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	if %MagnetCast.is_colliding():
-		var point = %MagnetCast.get_collision_point()
-		var diff = (point - global_position).normalized()
-		
-		if magnet_mode == MagnetMode.RED:
-			velocity += diff * delta * MAGNET_FORCE
-		elif magnet_mode == MagnetMode.BLUE:
-			velocity -= diff * delta * MAGNET_FORCE
-
+		_physics_air(delta)
+			
 	move_and_slide()
