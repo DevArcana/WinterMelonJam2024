@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=4 uid="uid://en70qfhsnv4b"]
 
-[ext_resource type="PackedScene" uid="uid://do5n61hi8wdrr" path="res://player/player.tscn" id="1_0dvev"]
+[ext_resource type="PackedScene" uid="uid://do5n61hi8wdrr" path="res://entities/player/player.tscn" id="1_0dvev"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_5busc"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_yuu63"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_qb67f"]
 [ext_resource type="Texture2D" uid="uid://b1hdlqx788vjv" path="res://addons/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_transparent_packed.png" id="5_b32us"]
-[ext_resource type="PackedScene" uid="uid://dmxk2xvuiilyr" path="res://magnetism/polarized_tile.tscn" id="6_4363o"]
+[ext_resource type="PackedScene" uid="uid://dmxk2xvuiilyr" path="res://entities/magnetism/polarized_tile.tscn" id="6_4363o"]
 
 [sub_resource type="Resource" id="Resource_xgha5"]
 script = ExtResource("4_qb67f")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://omxw4e31x0bj"
-path="res://.godot/imported/magnet0006.png-e933a821498aa5b3b8278dde8ac8808f.ctex"
+uid="uid://bdyv2uisiksku"
+path="res://.godot/imported/player_model0000.png-fb9c1c6c48a922401e68b4bec9a7beef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/gfx/magnet0006.png"
-dest_files=["res://.godot/imported/magnet0006.png-e933a821498aa5b3b8278dde8ac8808f.ctex"]
+source_file="res://entities/player/gfx/player_model0000.png"
+dest_files=["res://.godot/imported/player_model0000.png-fb9c1c6c48a922401e68b4bec9a7beef.ctex"]
 
 [params]
 
