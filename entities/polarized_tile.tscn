@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmxk2xvuiilyr"]
+
+[ext_resource type="Script" path="res://scripts/polarized.gd" id="1_kpw56"]
+[ext_resource type="Texture2D" uid="uid://7v66eualaq7l" path="res://addons/kenney_1-bit-platformer-pack/Tiles/Transparent/tile_0009.png" id="1_ld4la"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7jbk"]
+size = Vector2(16, 16)
+
+[node name="PolarizedTile" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_kpw56")
+
+[node name="Tile0009" type="Sprite2D" parent="."]
+texture = ExtResource("1_ld4la")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_n7jbk")

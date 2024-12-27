@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
 var dir : float = 0.0
-var magnet_mode : MagnetMode = MagnetMode.INACTIVE
+var magnet_mode : Magnetism.Polarity = Magnetism.Polarity.INERT
 var magnet_target : Vector2 = Vector2.ZERO
-
-enum MagnetMode {INACTIVE, RED, BLUE}
+var magnet_push : bool = false
 
 const EPSILON = 0.001
 const JUMP_VELOCITY = 400.0
@@ -15,23 +14,24 @@ const GROUND_FRICTION = 3.0
 const AIR_FRICTION = 0.5
 const MAGNET_FORCE = 300.0
 
-func _set_magnet_mode(mode: MagnetMode, target: Vector2 = Vector2.ZERO):
+func _set_magnet_mode(mode: Magnetism.Polarity, target_polarity: Magnetism.Polarity = Magnetism.Polarity.INERT, target: Vector2 = Vector2.ZERO):
 	magnet_mode = mode
 	magnet_target = target
+	magnet_push = mode == target_polarity
 	
-	if magnet_mode == MagnetMode.INACTIVE:
+	if magnet_mode == Magnetism.Polarity.INERT:
 		%MagnetSprite.modulate = Color.WHITE
 		%MagnetSprite.play("default")
-	elif magnet_mode == MagnetMode.RED:
+	elif magnet_mode == Magnetism.Polarity.RED:
 		%MagnetSprite.modulate = Color.RED
 		%MagnetSprite.play("pull")
-	elif magnet_mode == MagnetMode.BLUE:
+	elif magnet_mode == Magnetism.Polarity.BLUE:
 		%MagnetSprite.modulate = Color.BLUE
 		%MagnetSprite.play("push")
 
 func _apply_magnet_force(delta):
 	var magnet_dir = (magnet_target - global_position).normalized()
-	if magnet_mode == MagnetMode.BLUE:
+	if magnet_push:
 		magnet_dir = -magnet_dir
 	velocity = magnet_dir * MAGNET_FORCE
 
@@ -53,7 +53,7 @@ func _physics_ground(delta):
 
 func _physics_air(delta):
 	# Apply gravity
-	if magnet_mode == MagnetMode.INACTIVE:
+	if magnet_mode == Magnetism.Polarity.INERT:
 		velocity += get_gravity() * delta
 	
 	# Apply friction
@@ -75,22 +75,24 @@ func _physics_process(delta):
 	else:
 		_physics_air(delta)
 		
-	if magnet_mode == MagnetMode.INACTIVE:
+	if magnet_mode == Magnetism.Polarity.INERT:
 		%Magnet.look_at(get_global_mouse_position())
 		
 		if %MagnetCast.is_colliding():
-			if Input.is_action_just_pressed("fire_red"):
-				_set_magnet_mode(MagnetMode.RED, %MagnetCast.get_collision_point())
-			if Input.is_action_just_pressed("fire_blue"):
-				_set_magnet_mode(MagnetMode.BLUE, %MagnetCast.get_collision_point())
+			var hit = %MagnetCast.get_collider()
+			if hit is Polarized and hit.polarity != Magnetism.Polarity.INERT:
+				if Input.is_action_just_pressed("fire_red"):
+					_set_magnet_mode(Magnetism.Polarity.RED, hit.polarity, %MagnetCast.get_collision_point())
+				if Input.is_action_just_pressed("fire_blue"):
+					_set_magnet_mode(Magnetism.Polarity.BLUE, hit.polarity, %MagnetCast.get_collision_point())
 	else:
 		%Magnet.look_at(magnet_target)
 		_apply_magnet_force(delta)
-		if magnet_mode == MagnetMode.RED:
+		if magnet_mode == Magnetism.Polarity.RED:
 			if Input.is_action_just_released("fire_red"):
-				_set_magnet_mode(MagnetMode.INACTIVE)
-		elif magnet_mode == MagnetMode.BLUE:
+				_set_magnet_mode(Magnetism.Polarity.INERT)
+		elif magnet_mode == Magnetism.Polarity.BLUE:
 			if Input.is_action_just_released("fire_blue"):
-				_set_magnet_mode(MagnetMode.INACTIVE)
+				_set_magnet_mode(Magnetism.Polarity.INERT)
 	
 	move_and_slide()
