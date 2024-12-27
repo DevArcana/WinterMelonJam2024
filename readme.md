@@ -11,3 +11,4 @@ Theme: Polarity
 # External Assets and Tools
 
 [Godot 4.3](https://godotengine.org/)
+[Phantom Camera](https://phantom-camera.dev/core-nodes/phantom-camera-2d)
