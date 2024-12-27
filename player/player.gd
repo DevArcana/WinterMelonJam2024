@@ -21,10 +21,13 @@ func _set_magnet_mode(mode: MagnetMode, target: Vector2 = Vector2.ZERO):
 	
 	if magnet_mode == MagnetMode.INACTIVE:
 		%MagnetSprite.modulate = Color.WHITE
+		%MagnetSprite.play("default")
 	elif magnet_mode == MagnetMode.RED:
 		%MagnetSprite.modulate = Color.RED
+		%MagnetSprite.play("pull")
 	elif magnet_mode == MagnetMode.BLUE:
 		%MagnetSprite.modulate = Color.BLUE
+		%MagnetSprite.play("push")
 
 func _apply_magnet_force(delta):
 	var magnet_dir = (magnet_target - global_position).normalized()
