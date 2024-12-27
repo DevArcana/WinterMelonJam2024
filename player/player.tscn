@@ -1,21 +1,21 @@
 [gd_scene load_steps=20 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v821l"]
-[ext_resource type="Texture2D" uid="uid://bdyv2uisiksku" path="res://assets/player/player_model0000.png" id="2_eome6"]
-[ext_resource type="Texture2D" uid="uid://cfekfcf07qlhb" path="res://assets/player/player_walking0002.png" id="3_842el"]
-[ext_resource type="Texture2D" uid="uid://bn7lgy730mmwy" path="res://assets/magnet/magnet0000.png" id="3_svcvt"]
-[ext_resource type="Texture2D" uid="uid://vrrkhi7l3dt8" path="res://assets/player/player_walking0003.png" id="4_dyrne"]
-[ext_resource type="Texture2D" uid="uid://omxw4e31x0bj" path="res://assets/magnet/magnet0006.png" id="4_kg6yo"]
-[ext_resource type="Texture2D" uid="uid://dx8ixg63oobnf" path="res://assets/player/player_walking0004.png" id="5_8fbs0"]
-[ext_resource type="Texture2D" uid="uid://dbmblo66rhnuk" path="res://assets/magnet/magnet0005.png" id="5_mx1vm"]
-[ext_resource type="Texture2D" uid="uid://d10trmulmgl22" path="res://assets/player/player_walking0005.png" id="6_wso6q"]
-[ext_resource type="Texture2D" uid="uid://ucs3emas0h22" path="res://assets/magnet/magnet0004.png" id="6_xcolb"]
-[ext_resource type="Texture2D" uid="uid://c6qqbs6f5d3bx" path="res://assets/magnet/magnet0003.png" id="7_3xdtn"]
-[ext_resource type="Texture2D" uid="uid://cdy5htumogsle" path="res://assets/magnet/magnet0002.png" id="8_l1jyu"]
-[ext_resource type="Texture2D" uid="uid://d3eilrpjaxkr7" path="res://assets/magnet/magnet0001.png" id="9_kcbld"]
-[ext_resource type="AudioStream" uid="uid://di00kj02yl8mn" path="res://assets/magnet/effect.mp3" id="10_khece"]
-[ext_resource type="AudioStream" uid="uid://b46xuubge20kt" path="res://player/hop.mp3" id="11_a3jhy"]
-[ext_resource type="AudioStream" uid="uid://cgn3vjov5ld26" path="res://player/step.mp3" id="12_phb4q"]
+[ext_resource type="Texture2D" uid="uid://bdyv2uisiksku" path="res://player/gfx/player_model0000.png" id="2_eome6"]
+[ext_resource type="Texture2D" uid="uid://cfekfcf07qlhb" path="res://player/gfx/player_walking0002.png" id="3_842el"]
+[ext_resource type="Texture2D" uid="uid://bn7lgy730mmwy" path="res://player/gfx/magnet0000.png" id="3_svcvt"]
+[ext_resource type="Texture2D" uid="uid://vrrkhi7l3dt8" path="res://player/gfx/player_walking0003.png" id="4_dyrne"]
+[ext_resource type="Texture2D" uid="uid://omxw4e31x0bj" path="res://player/gfx/magnet0006.png" id="4_kg6yo"]
+[ext_resource type="Texture2D" uid="uid://dx8ixg63oobnf" path="res://player/gfx/player_walking0004.png" id="5_8fbs0"]
+[ext_resource type="Texture2D" uid="uid://dbmblo66rhnuk" path="res://player/gfx/magnet0005.png" id="5_mx1vm"]
+[ext_resource type="Texture2D" uid="uid://d10trmulmgl22" path="res://player/gfx/player_walking0005.png" id="6_wso6q"]
+[ext_resource type="Texture2D" uid="uid://ucs3emas0h22" path="res://player/gfx/magnet0004.png" id="6_xcolb"]
+[ext_resource type="Texture2D" uid="uid://c6qqbs6f5d3bx" path="res://player/gfx/magnet0003.png" id="7_3xdtn"]
+[ext_resource type="Texture2D" uid="uid://cdy5htumogsle" path="res://player/gfx/magnet0002.png" id="8_l1jyu"]
+[ext_resource type="Texture2D" uid="uid://d3eilrpjaxkr7" path="res://player/gfx/magnet0001.png" id="9_kcbld"]
+[ext_resource type="AudioStream" uid="uid://di00kj02yl8mn" path="res://player/sfx/effect.mp3" id="14_56y3o"]
+[ext_resource type="AudioStream" uid="uid://b46xuubge20kt" path="res://player/sfx/hop.mp3" id="15_kig86"]
+[ext_resource type="AudioStream" uid="uid://cgn3vjov5ld26" path="res://player/sfx/step.mp3" id="16_hkmpj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw1q3"]
 size = Vector2(13, 16)
@@ -112,35 +112,28 @@ script = ExtResource("1_v821l")
 position = Vector2(0.5, -8)
 shape = SubResource("RectangleShape2D_tw1q3")
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-unique_name_in_owner = true
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.680711, 0.543129, 0.296702, 1)
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_14lrl")
 
 [node name="Magnet" type="Node2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(0.37, -10.345)
 
-[node name="MagnetSprite" type="AnimatedSprite2D" parent="Magnet"]
-unique_name_in_owner = true
+[node name="Sprite" type="AnimatedSprite2D" parent="Magnet"]
 position = Vector2(11, 0)
 sprite_frames = SubResource("SpriteFrames_40j2s")
 speed_scale = 2.0
 
-[node name="MagnetCast" type="RayCast2D" parent="Magnet"]
-unique_name_in_owner = true
+[node name="Raycast" type="RayCast2D" parent="Magnet"]
 target_position = Vector2(1000, 0)
 collision_mask = 2
 
-[node name="MagnetAudio" type="AudioStreamPlayer" parent="Magnet"]
-unique_name_in_owner = true
-stream = ExtResource("10_khece")
+[node name="SfxMagnet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_56y3o")
 
-[node name="PlayerAudioHop" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("11_a3jhy")
+[node name="SfxJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_kig86")
 
-[node name="PlayerAudioStep" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("12_phb4q")
+[node name="SfxWalk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_hkmpj")
