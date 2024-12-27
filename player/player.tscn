@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://do5n61hi8wdrr"]
+[gd_scene load_steps=6 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v821l"]
 [ext_resource type="Texture2D" uid="uid://3qagxcg2qlrm" path="res://addons/kenney_1-bit-platformer-pack/Tiles/Transparent/tile_0240.png" id="2_ue6ca"]
@@ -6,6 +6,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw1q3"]
 size = Vector2(12, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjwsv"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v821l")
@@ -33,3 +35,6 @@ offset = Vector2(10, 10)
 [node name="MagnetCast" type="RayCast2D" parent="Magnet"]
 unique_name_in_owner = true
 target_position = Vector2(1000, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sjwsv")
