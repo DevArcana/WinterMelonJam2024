@@ -17,3 +17,5 @@ Theme: Polarity
 [Kenney's 1-Bit Platformer Pack](https://kenney.nl/assets/1-bit-platformer-pack)
 
 [DebugDraw3D](https://godotengine.org/asset-library/asset/1766)
+
+[Audacity](https://www.audacityteam.org/)
