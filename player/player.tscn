@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://do5n61hi8wdrr"]
+[gd_scene load_steps=5 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_v821l"]
 [ext_resource type="Texture2D" uid="uid://3qagxcg2qlrm" path="res://addons/kenney_1-bit-platformer-pack/Tiles/Transparent/tile_0240.png" id="2_ue6ca"]
+[ext_resource type="Texture2D" uid="uid://cscrna2jdat8" path="res://addons/kenney_1-bit-platformer-pack/Tiles/Transparent/tile_0327.png" id="3_k0p3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw1q3"]
 size = Vector2(12, 11)
@@ -13,6 +14,22 @@ script = ExtResource("1_v821l")
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_tw1q3")
 
-[node name="Tile0240" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("2_ue6ca")
+
+[node name="Magnet" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -5)
+
+[node name="MagnetSprite" type="Sprite2D" parent="Magnet"]
+unique_name_in_owner = true
+rotation = -0.785398
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_k0p3j")
+centered = false
+offset = Vector2(10, 10)
+
+[node name="MagnetCast" type="RayCast2D" parent="Magnet"]
+unique_name_in_owner = true
+target_position = Vector2(1000, 0)
