@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctqdv1h4p6vkc"]
+
+[ext_resource type="Texture2D" uid="uid://bn7lgy730mmwy" path="res://entities/player/gfx/magnet0000.png" id="1_5kshh"]
+[ext_resource type="Script" path="res://inventory/pickable_item.gd" id="2_7b4vk"]
+[ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="3_ghw5f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ca0x8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5kshh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a52np"]
+radius = 8.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_oxvqp"]
+line_spacing = -4.0
+font = ExtResource("3_ghw5f")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="PickableItem" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ca0x8")
+script = ExtResource("2_7b4vk")
+item_scene = "res://inventory/items/magnet.tscn"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_a52np")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = -9.0
+text = "Press
+E
+to pick up..."
+label_settings = SubResource("LabelSettings_oxvqp")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

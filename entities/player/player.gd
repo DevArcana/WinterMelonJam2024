@@ -18,6 +18,9 @@ const GROUND_FRICTION = 3.0
 const AIR_FRICTION = 0.5
 const STEP_INTERVAL = 1.0
 
+func pick_up(item_scene: String):
+	ref_held_item.add_child(load(item_scene).instantiate())
+
 func target_with_item(pos: Vector2):
 	hand_rot_override = true
 	ref_held_item.look_at(pos)
@@ -62,17 +65,18 @@ func _physics_process(delta):
 	dir = Input.get_axis("left", "right")
 	
 	hand_rot_override = false
-	var held_item = ref_held_item.get_child(0) as Item
-	if held_item:
-		if Input.is_action_just_pressed("fire_primary"):
-			held_item.left_mouse_button_pressed(self)
-		if Input.is_action_just_pressed("fire_secondary"):
-			held_item.right_mouse_button_pressed(self)
-		if Input.is_action_just_released("fire_primary"):
-			held_item.left_mouse_button_released(self)
-		if Input.is_action_just_released("fire_secondary"):
-			held_item.right_mouse_button_released(self)
-		held_item.physics_tick(self, delta)
+	if ref_held_item.get_child_count() > 0:
+		var held_item = ref_held_item.get_child(0) as Item
+		if held_item:
+			if Input.is_action_just_pressed("fire_primary"):
+				held_item.left_mouse_button_pressed(self)
+			if Input.is_action_just_pressed("fire_secondary"):
+				held_item.right_mouse_button_pressed(self)
+			if Input.is_action_just_released("fire_primary"):
+				held_item.left_mouse_button_released(self)
+			if Input.is_action_just_released("fire_secondary"):
+				held_item.right_mouse_button_released(self)
+			held_item.physics_tick(self, delta)
 	if not hand_rot_override:
 		ref_held_item.look_at(get_global_mouse_position())
 	

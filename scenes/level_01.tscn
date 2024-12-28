@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://en70qfhsnv4b"]
+[gd_scene load_steps=15 format=4 uid="uid://en70qfhsnv4b"]
 
 [ext_resource type="PackedScene" uid="uid://do5n61hi8wdrr" path="res://entities/player/player.tscn" id="1_0dvev"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_5busc"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c7e831sasvqew" path="res://entities/message_area/message_area.tscn" id="6_mb5ut"]
 [ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="7_hcvaq"]
 [ext_resource type="PackedScene" uid="uid://dmxk2xvuiilyr" path="res://entities/magnetism/polarized_tile.tscn" id="8_1lpvc"]
+[ext_resource type="PackedScene" uid="uid://ctqdv1h4p6vkc" path="res://inventory/pickable_item.tscn" id="9_5y2jb"]
+[ext_resource type="PackedScene" uid="uid://sql8ekc7mfo3" path="res://entities/door/door.tscn" id="10_8m4lj"]
 
 [sub_resource type="Resource" id="Resource_xgha5"]
 script = ExtResource("4_qb67f")
@@ -957,3 +959,10 @@ label_settings = SubResource("LabelSettings_7ipm0")
 [node name="PolarizedTile" parent="." instance=ExtResource("8_1lpvc")]
 position = Vector2(170, 593)
 polarity = 1
+
+[node name="PickableItem" parent="." instance=ExtResource("9_5y2jb")]
+position = Vector2(73, 757)
+
+[node name="Door" parent="." instance=ExtResource("10_8m4lj")]
+position = Vector2(133, 760)
+scene = "res://scenes/level_01.tscn"

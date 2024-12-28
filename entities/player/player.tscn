@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://do5n61hi8wdrr"]
+[gd_scene load_steps=22 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_v821l"]
 [ext_resource type="Texture2D" uid="uid://bdyv2uisiksku" path="res://entities/player/gfx/player_model0000.png" id="2_eome6"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://vrrkhi7l3dt8" path="res://entities/player/gfx/player_walking0003.png" id="4_dyrne"]
 [ext_resource type="Texture2D" uid="uid://dx8ixg63oobnf" path="res://entities/player/gfx/player_walking0004.png" id="5_8fbs0"]
 [ext_resource type="Texture2D" uid="uid://d10trmulmgl22" path="res://entities/player/gfx/player_walking0005.png" id="6_wso6q"]
-[ext_resource type="PackedScene" uid="uid://tamtql1forir" path="res://inventory/items/magnet.tscn" id="7_g7non"]
 [ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="14_swybl"]
 [ext_resource type="Script" path="res://entities/player/thoughts_consumer.gd" id="14_vtw4s"]
 [ext_resource type="AudioStream" uid="uid://b46xuubge20kt" path="res://entities/player/sfx/hop.mp3" id="15_kig86"]
@@ -65,7 +64,7 @@ stream_2/stream = ExtResource("21_lrq6t")
 stream_3/stream = ExtResource("22_611sg")
 stream_4/stream = ExtResource("23_fsuiq")
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 collision_layer = 5
 collision_mask = 5
@@ -82,8 +81,6 @@ sprite_frames = SubResource("SpriteFrames_14lrl")
 
 [node name="HeldItem" type="Node2D" parent="."]
 position = Vector2(0, -10)
-
-[node name="Magnet" parent="HeldItem" instance=ExtResource("7_g7non")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
