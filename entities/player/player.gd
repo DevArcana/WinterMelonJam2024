@@ -95,7 +95,7 @@ func _physics_process(delta):
 			was_on_floor = true
 			$SfxLand.play()
 		
-		if velocity.y >= 0.0 and Input.is_action_just_pressed("jump"):
+		if velocity.y >= 0.0 and Input.is_action_pressed("jump"):
 			velocity.y -= JUMP_VELOCITY
 			$SfxJump.play()
 		
