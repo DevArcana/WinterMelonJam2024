@@ -14,6 +14,13 @@ func _ready():
 	label.text = ""
 
 func _physics_process(delta):
+	if Thoughts.get_interrupt():
+		waiting = false
+		timer = 0.0
+		current_msg = ""
+		char_index = 0
+		label.text = ""
+	
 	# if there is nothing to do, exit early
 	if not waiting and not Thoughts.has_enqueued() and current_msg == "":
 		timer = 0.0

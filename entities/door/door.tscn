@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cculnvc88vx7l" path="res://addons/kenney_1-bit-platformer-pack/Tiles/Transparent/tile_0056.png" id="2_jyu6y"]
 [ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="3_c8a86"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_64phj"]
-size = Vector2(16, 16)
-
 [sub_resource type="LabelSettings" id="LabelSettings_anaps"]
 line_spacing = -4.0
 font = ExtResource("3_c8a86")
@@ -18,7 +15,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:position")
+tracks/0/path = NodePath("../Label:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,7 +31,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:position")
+tracks/0/path = NodePath("../Label:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,14 +47,12 @@ _data = {
 "float": SubResource("Animation_i51hp")
 }
 
-[node name="Door" type="Area2D"]
-script = ExtResource("1_dyp30")
+[sub_resource type="CircleShape2D" id="CircleShape2D_1glw3"]
+radius = 12.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_64phj")
-
-[node name="Tile0056" type="Sprite2D" parent="."]
+[node name="Door" type="Sprite2D"]
 texture = ExtResource("2_jyu6y")
+script = ExtResource("1_dyp30")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -23.0
@@ -71,11 +66,17 @@ label_settings = SubResource("LabelSettings_anaps")
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Area2D")
 libraries = {
 "": SubResource("AnimationLibrary_qunk8")
 }
 autoplay = "float"
 speed_scale = 0.8
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1glw3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

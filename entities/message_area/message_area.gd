@@ -5,6 +5,7 @@ extends Node2D
 @export var message_delay : float = 1.0
 @export var clear_last_message : bool = false
 @export var thought : bool = false
+@export var interrupt : bool = false
 
 @onready var label = $Control/Label
 
@@ -22,6 +23,8 @@ func _ready():
 
 func _on_body_entered(body):
 	if thought:
+		if interrupt:
+			Thoughts.interrupt()
 		for msg in messages:
 			Thoughts.enqueue_msg(msg)
 		queue_free()

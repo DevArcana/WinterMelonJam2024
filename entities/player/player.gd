@@ -112,3 +112,7 @@ func _physics_process(delta):
 		$SfxWind.volume_db = -40 + f * 40
 	else:
 		$SfxWind.volume_db = lerp($SfxWind.volume_db, -40.0, delta)
+	
+	if global_position.y > 3000:
+		Thoughts.interrupt()
+		get_tree().reload_current_scene()
