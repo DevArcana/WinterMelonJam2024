@@ -935,7 +935,7 @@ messages = Array[String](["This is the \"left\" direction.", "Please go right."]
 char_speed = 0.05
 message_delay = 0.3
 clear_last_message = true
-follow = true
+thought = true
 
 [node name="Warning02" parent="." instance=ExtResource("6_mb5ut")]
 position = Vector2(-888, 734)
@@ -943,7 +943,7 @@ messages = Array[String](["Seriously...", "There is nothing here.", "Please go b
 char_speed = 0.05
 message_delay = 0.3
 clear_last_message = true
-follow = true
+thought = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -94.0

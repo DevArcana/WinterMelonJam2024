@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://do5n61hi8wdrr"]
+[gd_scene load_steps=23 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_v821l"]
 [ext_resource type="Texture2D" uid="uid://bdyv2uisiksku" path="res://entities/player/gfx/player_model0000.png" id="2_eome6"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://cdy5htumogsle" path="res://entities/player/gfx/magnet0002.png" id="8_l1jyu"]
 [ext_resource type="Texture2D" uid="uid://d3eilrpjaxkr7" path="res://entities/player/gfx/magnet0001.png" id="9_kcbld"]
 [ext_resource type="AudioStream" uid="uid://di00kj02yl8mn" path="res://entities/player/sfx/effect.mp3" id="14_56y3o"]
+[ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="14_swybl"]
+[ext_resource type="Script" path="res://entities/player/thoughts_consumer.gd" id="14_vtw4s"]
 [ext_resource type="AudioStream" uid="uid://b46xuubge20kt" path="res://entities/player/sfx/hop.mp3" id="15_kig86"]
 [ext_resource type="AudioStream" uid="uid://cgn3vjov5ld26" path="res://entities/player/sfx/step.mp3" id="16_hkmpj"]
 
@@ -105,6 +107,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_x6d5n"]
+line_spacing = -4.0
+font = ExtResource("14_swybl")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 5
@@ -131,6 +139,35 @@ speed_scale = 2.0
 [node name="Raycast" type="RayCast2D" parent="Magnet"]
 target_position = Vector2(1000, 0)
 collision_mask = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -29.76
+offset_bottom = -29.76
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_vtw4s")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = -13.0
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "This is a thought."
+label_settings = SubResource("LabelSettings_x6d5n")
 
 [node name="SfxMagnet" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_56y3o")

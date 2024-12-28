@@ -4,7 +4,7 @@ extends Node2D
 @export var char_speed : float = 0.1
 @export var message_delay : float = 1.0
 @export var clear_last_message : bool = false
-@export var follow : bool = false
+@export var thought : bool = false
 
 @onready var label = $Control/Label
 
@@ -14,7 +14,6 @@ var current_char_index = 0
 var waiting = false
 var finished = false
 var timer = 0
-var follow_target : Node2D
 
 func _ready():
 	label.text = ""
@@ -22,15 +21,14 @@ func _ready():
 	timer = message_delay
 
 func _on_body_entered(body):
+	if thought:
+		for msg in messages:
+			Thoughts.enqueue_msg(msg)
+		queue_free()
 	triggered = true
-	follow_target = body
 
 func _physics_process(delta):
 	if triggered and not finished:
-		
-		if follow and follow_target:
-			global_position = follow_target.global_position + Vector2.UP * 8
-		
 		timer += delta
 		
 		# Handle message delay

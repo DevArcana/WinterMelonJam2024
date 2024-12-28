@@ -46,8 +46,7 @@ offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
-text = "This is placeholder text.
-Use this object to give the player messages."
+text = "[Info Zone]"
 label_settings = SubResource("LabelSettings_gtco3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
