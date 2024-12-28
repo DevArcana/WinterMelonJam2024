@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://si1ufw2ivdwj"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dk88hy50ypohu"]
 
 [ext_resource type="Texture2D" uid="uid://b1hdlqx788vjv" path="res://addons/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_transparent_packed.png" id="1_7lx4h"]
 [ext_resource type="Texture2D" uid="uid://ch25sihwskccl" path="res://terrain/snow-terrain-platforms-sprite-sheet.png" id="2_6vm4o"]
