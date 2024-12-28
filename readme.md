@@ -19,3 +19,5 @@ Theme: Polarity
 [DebugDraw3D](https://godotengine.org/asset-library/asset/1766)
 
 [Audacity](https://www.audacityteam.org/)
+
+[m3x6, a font by Daniel Linssen](https://managore.itch.io/m3x6)
