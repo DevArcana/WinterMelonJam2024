@@ -19,9 +19,11 @@ ease = 2
 [node name="Level03" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_s7mpb")]
+position = Vector2(2019, 137)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
+position = Vector2(2019, 137)
 zoom = Vector2(4, 4)
 process_callback = 0
 
@@ -32,6 +34,7 @@ script = ExtResource("2_au5fw")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
+position = Vector2(2019, 137)
 script = ExtResource("3_0ptx8")
 follow_mode = 5
 follow_target = NodePath("../Player")
