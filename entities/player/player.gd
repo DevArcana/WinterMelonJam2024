@@ -84,6 +84,7 @@ func _physics_process(delta):
 		if held_item:
 			if Input.is_action_just_pressed("drop_item"):
 				held_item.drop(self)
+				$SfxDropItem.play()
 			if Input.is_action_just_pressed("fire_primary"):
 				held_item.left_mouse_button_pressed(self)
 			if Input.is_action_just_pressed("fire_secondary"):

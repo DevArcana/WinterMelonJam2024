@@ -21,5 +21,5 @@ func physics_tick(player: Player, delta: float) -> void:
 func drop(player: Player):
 	queue_free()
 	var item = pickable_item.instantiate() as Node2D
-	player.get_parent().add_child(item)
 	item.global_position = player.global_position + Vector2.UP * 8
+	player.get_parent().add_child(item)
