@@ -8,6 +8,7 @@ var dir : float = 0.0
 var step_timer = 0.0
 var was_on_floor = false
 var hand_rot_override = false
+var in_cutscene = false
 
 const EPSILON = 0.001
 const JUMP_VELOCITY = 400.0
@@ -20,6 +21,14 @@ const AIR_ACCEL = 1200.0
 const AIR_DECEL = 300.0
 const AIR_FRICTION = 0.3
 const STEP_INTERVAL = 1.0
+
+func enter_cutscene():
+	in_cutscene = true
+	ref_player_sprite.play("default")
+
+func exit_cutscene():
+	in_cutscene = false
+	velocity = Vector2.ZERO
 
 func pick_up(item_scene: String) -> bool:
 	if ref_held_item.get_child_count() > 0:
@@ -76,6 +85,9 @@ func _physics_air(delta):
 	velocity *= new_speed
 
 func _physics_process(delta):
+	if in_cutscene:
+		return
+	
 	dir = Input.get_axis("left", "right")
 	
 	hand_rot_override = false
