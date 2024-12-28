@@ -1,19 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://do5n61hi8wdrr"]
+[gd_scene load_steps=23 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_v821l"]
 [ext_resource type="Texture2D" uid="uid://bdyv2uisiksku" path="res://entities/player/gfx/player_model0000.png" id="2_eome6"]
 [ext_resource type="Texture2D" uid="uid://cfekfcf07qlhb" path="res://entities/player/gfx/player_walking0002.png" id="3_842el"]
-[ext_resource type="Texture2D" uid="uid://bn7lgy730mmwy" path="res://entities/player/gfx/magnet0000.png" id="3_svcvt"]
 [ext_resource type="Texture2D" uid="uid://vrrkhi7l3dt8" path="res://entities/player/gfx/player_walking0003.png" id="4_dyrne"]
-[ext_resource type="Texture2D" uid="uid://omxw4e31x0bj" path="res://entities/player/gfx/magnet0006.png" id="4_kg6yo"]
 [ext_resource type="Texture2D" uid="uid://dx8ixg63oobnf" path="res://entities/player/gfx/player_walking0004.png" id="5_8fbs0"]
-[ext_resource type="Texture2D" uid="uid://dbmblo66rhnuk" path="res://entities/player/gfx/magnet0005.png" id="5_mx1vm"]
 [ext_resource type="Texture2D" uid="uid://d10trmulmgl22" path="res://entities/player/gfx/player_walking0005.png" id="6_wso6q"]
-[ext_resource type="Texture2D" uid="uid://ucs3emas0h22" path="res://entities/player/gfx/magnet0004.png" id="6_xcolb"]
-[ext_resource type="Texture2D" uid="uid://c6qqbs6f5d3bx" path="res://entities/player/gfx/magnet0003.png" id="7_3xdtn"]
-[ext_resource type="Texture2D" uid="uid://cdy5htumogsle" path="res://entities/player/gfx/magnet0002.png" id="8_l1jyu"]
-[ext_resource type="Texture2D" uid="uid://d3eilrpjaxkr7" path="res://entities/player/gfx/magnet0001.png" id="9_kcbld"]
-[ext_resource type="AudioStream" uid="uid://di00kj02yl8mn" path="res://entities/player/sfx/effect.mp3" id="14_56y3o"]
+[ext_resource type="PackedScene" uid="uid://tamtql1forir" path="res://inventory/items/magnet.tscn" id="7_g7non"]
 [ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="14_swybl"]
 [ext_resource type="Script" path="res://entities/player/thoughts_consumer.gd" id="14_vtw4s"]
 [ext_resource type="AudioStream" uid="uid://b46xuubge20kt" path="res://entities/player/sfx/hop.mp3" id="15_kig86"]
@@ -57,63 +50,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_40j2s"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_svcvt")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_kg6yo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_mx1vm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_xcolb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3xdtn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_l1jyu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_kcbld")
-}],
-"loop": true,
-"name": &"pull",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_kcbld")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_l1jyu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_3xdtn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_xcolb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_mx1vm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_kg6yo")
-}],
-"loop": true,
-"name": &"push",
-"speed": 5.0
-}]
-
 [sub_resource type="LabelSettings" id="LabelSettings_x6d5n"]
 line_spacing = -4.0
 font = ExtResource("14_swybl")
@@ -144,17 +80,10 @@ modulate = Color(0.680711, 0.543129, 0.296702, 1)
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_14lrl")
 
-[node name="Magnet" type="Node2D" parent="."]
-position = Vector2(0.37, -10.345)
+[node name="HeldItem" type="Node2D" parent="."]
+position = Vector2(0, -10)
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Magnet"]
-position = Vector2(11, 0)
-sprite_frames = SubResource("SpriteFrames_40j2s")
-speed_scale = 2.0
-
-[node name="Raycast" type="RayCast2D" parent="Magnet"]
-target_position = Vector2(1000, 0)
-collision_mask = 2
+[node name="Magnet" parent="HeldItem" instance=ExtResource("7_g7non")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -187,9 +116,6 @@ label_settings = SubResource("LabelSettings_x6d5n")
 
 [node name="SfxType" type="AudioStreamPlayer" parent="Control"]
 stream = SubResource("AudioStreamRandomizer_y04w6")
-
-[node name="SfxMagnet" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_56y3o")
 
 [node name="SfxJump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_kig86")

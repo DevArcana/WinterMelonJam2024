@@ -1,16 +1,13 @@
 extends CharacterBody2D
+class_name Player
 
-@onready var ref_magnet_raycast = $Magnet/Raycast
-@onready var ref_magnet_sprite = $Magnet/Sprite
-@onready var ref_magnet = $Magnet
 @onready var ref_player_sprite = $Sprite
+@onready var ref_held_item = $HeldItem
 
 var dir : float = 0.0
-var magnet_mode : Magnetism.Polarity = Magnetism.Polarity.INERT
-var magnet_target : Vector2 = Vector2.ZERO
-var magnet_push : bool = false
 var step_timer = 0.0
 var was_on_floor = false
+var hand_rot_override = false
 
 const EPSILON = 0.001
 const JUMP_VELOCITY = 400.0
@@ -19,36 +16,11 @@ const GROUND_ACCEL = 1200.0
 const GROUND_DECEL = 200.0
 const GROUND_FRICTION = 3.0
 const AIR_FRICTION = 0.5
-const MAGNET_FORCE = 300.0
 const STEP_INTERVAL = 1.0
 
-func _set_magnet_mode(mode: Magnetism.Polarity, target_polarity: Magnetism.Polarity = Magnetism.Polarity.INERT, target: Vector2 = Vector2.ZERO):
-	magnet_mode = mode
-	magnet_target = target
-	magnet_push = mode == target_polarity
-	
-	if magnet_mode == Magnetism.Polarity.INERT:
-		ref_magnet_sprite.modulate = Color.WHITE
-		ref_magnet_sprite.play("default")
-		$SfxMagnet.stop()
-	elif magnet_mode == Magnetism.Polarity.RED:
-		ref_magnet_sprite.modulate = Color.RED
-		ref_magnet_sprite.play("pull")
-		$SfxMagnet.play()
-	elif magnet_mode == Magnetism.Polarity.BLUE:
-		ref_magnet_sprite.modulate = Color.BLUE
-		ref_magnet_sprite.play("push")
-		$SfxMagnet.play()
-
-func _apply_magnet_force(delta):
-	var diff = magnet_target - global_position
-	var dist = diff.length()
-	var magnet_dir = diff.normalized()
-	if magnet_push:
-		magnet_dir = -magnet_dir
-	
-	$SfxMagnet.pitch_scale = clamp((dist / 400) + 0.7, 0.7, 1.0)
-	velocity = magnet_dir * MAGNET_FORCE
+func target_with_item(pos: Vector2):
+	hand_rot_override = true
+	ref_held_item.look_at(pos)
 
 func _physics_ground(delta):
 	# Apply input
@@ -76,8 +48,7 @@ func _physics_ground(delta):
 
 func _physics_air(delta):
 	# Apply gravity
-	if magnet_mode == Magnetism.Polarity.INERT:
-		velocity += get_gravity() * delta
+	velocity += get_gravity() * delta
 	
 	# Apply friction
 	var speed = velocity.length()
@@ -89,6 +60,21 @@ func _physics_air(delta):
 
 func _physics_process(delta):
 	dir = Input.get_axis("left", "right")
+	
+	hand_rot_override = false
+	var held_item = ref_held_item.get_child(0) as Item
+	if held_item:
+		if Input.is_action_just_pressed("fire_primary"):
+			held_item.left_mouse_button_pressed(self)
+		if Input.is_action_just_pressed("fire_secondary"):
+			held_item.right_mouse_button_pressed(self)
+		if Input.is_action_just_released("fire_primary"):
+			held_item.left_mouse_button_released(self)
+		if Input.is_action_just_released("fire_secondary"):
+			held_item.right_mouse_button_released(self)
+		held_item.physics_tick(self, delta)
+	if not hand_rot_override:
+		ref_held_item.look_at(get_global_mouse_position())
 	
 	if is_on_floor():
 		if not was_on_floor:
@@ -103,26 +89,6 @@ func _physics_process(delta):
 	else:
 		_physics_air(delta)
 		was_on_floor = false
-		
-	if magnet_mode == Magnetism.Polarity.INERT:
-		ref_magnet.look_at(get_global_mouse_position())
-		
-		if ref_magnet_raycast.is_colliding():
-			var hit = ref_magnet_raycast.get_collider()
-			if hit is Polarized and hit.polarity != Magnetism.Polarity.INERT:
-				if Input.is_action_just_pressed("fire_red"):
-					_set_magnet_mode(Magnetism.Polarity.RED, hit.polarity, ref_magnet_raycast.get_collision_point())
-				if Input.is_action_just_pressed("fire_blue"):
-					_set_magnet_mode(Magnetism.Polarity.BLUE, hit.polarity, ref_magnet_raycast.get_collision_point())
-	else:
-		ref_magnet.look_at(magnet_target)
-		_apply_magnet_force(delta)
-		if magnet_mode == Magnetism.Polarity.RED:
-			if Input.is_action_just_released("fire_red"):
-				_set_magnet_mode(Magnetism.Polarity.INERT)
-		elif magnet_mode == Magnetism.Polarity.BLUE:
-			if Input.is_action_just_released("fire_blue"):
-				_set_magnet_mode(Magnetism.Polarity.INERT)
 	
 	if velocity.x > EPSILON:
 		ref_player_sprite.play("walk")

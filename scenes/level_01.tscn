@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://en70qfhsnv4b"]
+[gd_scene load_steps=13 format=4 uid="uid://en70qfhsnv4b"]
 
 [ext_resource type="PackedScene" uid="uid://do5n61hi8wdrr" path="res://entities/player/player.tscn" id="1_0dvev"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_5busc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b1hdlqx788vjv" path="res://addons/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_transparent_packed.png" id="5_b32us"]
 [ext_resource type="PackedScene" uid="uid://c7e831sasvqew" path="res://entities/message_area/message_area.tscn" id="6_mb5ut"]
 [ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="7_hcvaq"]
+[ext_resource type="PackedScene" uid="uid://dmxk2xvuiilyr" path="res://entities/magnetism/polarized_tile.tscn" id="8_1lpvc"]
 
 [sub_resource type="Resource" id="Resource_xgha5"]
 script = ExtResource("4_qb67f")
@@ -952,3 +953,7 @@ offset_right = 97.0
 offset_bottom = 832.0
 text = "Big thanks for Daniel Linssen for his m3x6 font."
 label_settings = SubResource("LabelSettings_7ipm0")
+
+[node name="PolarizedTile" parent="." instance=ExtResource("8_1lpvc")]
+position = Vector2(170, 593)
+polarity = 1

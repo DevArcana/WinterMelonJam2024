@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://tamtql1forir"]
+
+[ext_resource type="Texture2D" uid="uid://bn7lgy730mmwy" path="res://entities/player/gfx/magnet0000.png" id="1_k4pck"]
+[ext_resource type="Script" path="res://inventory/items/magnet.gd" id="1_oqcfm"]
+[ext_resource type="Texture2D" uid="uid://omxw4e31x0bj" path="res://entities/player/gfx/magnet0006.png" id="2_65d3p"]
+[ext_resource type="Texture2D" uid="uid://dbmblo66rhnuk" path="res://entities/player/gfx/magnet0005.png" id="3_w6yof"]
+[ext_resource type="Texture2D" uid="uid://ucs3emas0h22" path="res://entities/player/gfx/magnet0004.png" id="4_yslcl"]
+[ext_resource type="Texture2D" uid="uid://c6qqbs6f5d3bx" path="res://entities/player/gfx/magnet0003.png" id="5_seh1t"]
+[ext_resource type="Texture2D" uid="uid://cdy5htumogsle" path="res://entities/player/gfx/magnet0002.png" id="6_08cfk"]
+[ext_resource type="Texture2D" uid="uid://d3eilrpjaxkr7" path="res://entities/player/gfx/magnet0001.png" id="7_tgbpt"]
+[ext_resource type="AudioStream" uid="uid://di00kj02yl8mn" path="res://entities/player/sfx/effect.mp3" id="9_3bydv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mgec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k4pck")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_65d3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w6yof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yslcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_seh1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_08cfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tgbpt")
+}],
+"loop": true,
+"name": &"pull",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_tgbpt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_08cfk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_seh1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yslcl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w6yof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_65d3p")
+}],
+"loop": true,
+"name": &"push",
+"speed": 5.0
+}]
+
+[node name="Magnet" type="Node2D"]
+script = ExtResource("1_oqcfm")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(11, 0)
+sprite_frames = SubResource("SpriteFrames_8mgec")
+speed_scale = 2.0
+
+[node name="Raycast" type="RayCast2D" parent="."]
+target_position = Vector2(1000, 0)
+collision_mask = 2
+
+[node name="SfxMagnet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_3bydv")
