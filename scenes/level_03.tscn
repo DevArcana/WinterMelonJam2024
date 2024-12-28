@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://c2kqgprmd7wig"]
+[gd_scene load_steps=11 format=4 uid="uid://c2kqgprmd7wig"]
 
 [ext_resource type="PackedScene" uid="uid://do5n61hi8wdrr" path="res://entities/player/player.tscn" id="1_s7mpb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_au5fw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ctqdv1h4p6vkc" path="res://inventory/pickable_item.tscn" id="6_u417i"]
 [ext_resource type="PackedScene" uid="uid://dmxk2xvuiilyr" path="res://entities/magnetism/polarized_tile.tscn" id="7_8c00w"]
 [ext_resource type="PackedScene" uid="uid://c7e831sasvqew" path="res://entities/message_area/message_area.tscn" id="8_nl8sd"]
+[ext_resource type="PackedScene" uid="uid://sql8ekc7mfo3" path="res://entities/door/door.tscn" id="9_82dh1"]
 
 [sub_resource type="Resource" id="Resource_1svn6"]
 script = ExtResource("4_6meu1")
@@ -140,3 +141,7 @@ message_delay = 0.5
 [node name="PolarizedTile5" parent="." instance=ExtResource("7_8c00w")]
 position = Vector2(1797, 169)
 polarity = 1
+
+[node name="Door" parent="." instance=ExtResource("9_82dh1")]
+position = Vector2(2496, 154)
+scene = "res://scenes/level_final.tscn"
