@@ -5,7 +5,7 @@ extends Item
 var polarity: Magnetism.Polarity = Magnetism.Polarity.INERT
 var range: Array[Polarized] = []
 
-const MAGNET_FORCE: float = 2400
+const MAGNET_FORCE: float = 2600
 
 func _ready():
 	particles.amount_ratio = 0.0
@@ -57,7 +57,7 @@ func physics_tick(player: Player, delta: float) -> void:
 			var d_pos = pos - player.global_position
 			var d = d_pos.length()
 			var dir = d_pos.normalized()
-			var l = 1 - clamp(d/150, 0.0, 1.0)
+			var l = 1 - clamp(d/200, 0.0, 1.0)
 			var f = MAGNET_FORCE * l * dir
 			if polarity == polarized.polarity:
 				f = -f

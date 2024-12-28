@@ -1,11 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://ljknvylncffn"]
+[gd_scene load_steps=18 format=3 uid="uid://ljknvylncffn"]
 
 [ext_resource type="Texture2D" uid="uid://b7mrltaasrahv" path="res://entities/santa/gfx/santa-idle0000.png" id="1_j0ng2"]
 [ext_resource type="Texture2D" uid="uid://db5sd17grdhek" path="res://entities/santa/gfx/santa-idle0001.png" id="2_rm1i8"]
+[ext_resource type="Texture2D" uid="uid://5sawiyarsh5t" path="res://entities/santa/gfx/santa-walk0000.png" id="3_fwhoa"]
 [ext_resource type="Script" path="res://entities/santa/santa.gd" id="3_qumew"]
+[ext_resource type="Texture2D" uid="uid://cvqhtmaqhlbrb" path="res://entities/santa/gfx/santa-walk0001.png" id="4_gs4ft"]
 [ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="4_j2utb"]
+[ext_resource type="Texture2D" uid="uid://3ihs7k3r38ch" path="res://entities/santa/gfx/santa-walk0002.png" id="5_7uohq"]
 [ext_resource type="AudioStream" uid="uid://dhu5l2afrbm2v" path="res://entities/player/sfx/type_01.mp3" id="5_16cnx"]
 [ext_resource type="AudioStream" uid="uid://ct3oqnocmm6yp" path="res://entities/player/sfx/type_02.mp3" id="6_blq1j"]
+[ext_resource type="Texture2D" uid="uid://ddhrtedypah8c" path="res://entities/santa/gfx/santa-walk0003.png" id="6_k62ew"]
 [ext_resource type="AudioStream" uid="uid://bi52g0namhyx3" path="res://entities/player/sfx/type_03.mp3" id="7_5cfm8"]
 [ext_resource type="AudioStream" uid="uid://vtcmrdkevstg" path="res://entities/player/sfx/type_04.mp3" id="8_cst0u"]
 [ext_resource type="AudioStream" uid="uid://mneg3sbnisil" path="res://entities/player/sfx/type_05.mp3" id="9_5g7ye"]
@@ -21,6 +25,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.25,
+"texture": ExtResource("3_fwhoa")
+}, {
+"duration": 0.25,
+"texture": ExtResource("4_gs4ft")
+}, {
+"duration": 0.25,
+"texture": ExtResource("5_7uohq")
+}, {
+"duration": 0.25,
+"texture": ExtResource("6_k62ew")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
@@ -44,7 +65,8 @@ stream_4/stream = ExtResource("9_5g7ye")
 
 [node name="Santa" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ede5p")
-frame_progress = 0.151777
+animation = &"walk"
+frame_progress = 0.22881
 speed_scale = 0.5
 script = ExtResource("3_qumew")
 

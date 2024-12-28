@@ -20,9 +20,11 @@ ease = 2
 [node name="Level02" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_adikg")]
+position = Vector2(-179, 769)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
+position = Vector2(-179, 769)
 zoom = Vector2(4, 4)
 process_callback = 0
 
@@ -33,6 +35,7 @@ script = ExtResource("2_ul0jg")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
+position = Vector2(-179, 769)
 script = ExtResource("3_rwhjp")
 follow_mode = 5
 follow_target = NodePath("../Player")
@@ -70,7 +73,7 @@ collision_enabled = false
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="PolarizedTile" parent="." instance=ExtResource("8_e5ys6")]
-position = Vector2(173, 636)
+position = Vector2(184, 569)
 polarity = 1
 
 [node name="PolarizedTile2" parent="." instance=ExtResource("8_e5ys6")]
@@ -78,19 +81,20 @@ position = Vector2(510, 761)
 polarity = 1
 
 [node name="PolarizedTile3" parent="." instance=ExtResource("8_e5ys6")]
-position = Vector2(1112, 613)
-polarity = 1
+position = Vector2(1082, 728)
+polarity = 2
 
 [node name="PickableItem" parent="." instance=ExtResource("9_dmlaf")]
 position = Vector2(73, 757)
+item_scene = "res://inventory/items/polarized_orb.tscn"
 
 [node name="Door" parent="." instance=ExtResource("10_ckf5w")]
 position = Vector2(1455, 761)
-scene = "res://scenes/level_02.tscn"
+scene = "res://scenes/level_03.tscn"
 
 [node name="Info02" parent="." instance=ExtResource("6_n06ik")]
-position = Vector2(32, 739)
-messages = Array[String](["Oh what is that?"])
+position = Vector2(-111, 737)
+messages = Array[String](["Oh what is that?", "Looks like a magnet ring."])
 char_speed = 0.05
 message_delay = 0.5
 thought = true
@@ -98,11 +102,17 @@ interrupt = true
 
 [node name="Info03" parent="." instance=ExtResource("6_n06ik")]
 position = Vector2(113, 739)
-messages = Array[String](["There are red and blue buttons", "Lets try blue on that red box (RMB)"])
+messages = Array[String](["I think I can use this to get up the ledge."])
 char_speed = 0.05
 message_delay = 0.5
 thought = true
 interrupt = true
+
+[node name="Info09" parent="." instance=ExtResource("6_n06ik")]
+position = Vector2(189, 739)
+messages = Array[String](["[Press RMB to polarize the magnet BLUE]"])
+char_speed = 0.05
+message_delay = 0.5
 
 [node name="Info04" parent="." instance=ExtResource("6_n06ik")]
 position = Vector2(268, 641)
@@ -131,6 +141,14 @@ interrupt = true
 [node name="Info07" parent="." instance=ExtResource("6_n06ik")]
 position = Vector2(1345, 736)
 messages = Array[String](["Huh still got it!"])
+char_speed = 0.05
+message_delay = 0.5
+thought = true
+interrupt = true
+
+[node name="Info10" parent="." instance=ExtResource("6_n06ik")]
+position = Vector2(981, 718)
+messages = Array[String](["Maybe I can jump off this cube?"])
 char_speed = 0.05
 message_delay = 0.5
 thought = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c2kqgprmd7wig"]
+[gd_scene load_steps=12 format=4 uid="uid://c2kqgprmd7wig"]
 
 [ext_resource type="PackedScene" uid="uid://do5n61hi8wdrr" path="res://entities/player/player.tscn" id="1_s7mpb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_au5fw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dmxk2xvuiilyr" path="res://entities/magnetism/polarized_tile.tscn" id="7_8c00w"]
 [ext_resource type="PackedScene" uid="uid://c7e831sasvqew" path="res://entities/message_area/message_area.tscn" id="8_nl8sd"]
 [ext_resource type="PackedScene" uid="uid://sql8ekc7mfo3" path="res://entities/door/door.tscn" id="9_82dh1"]
+[ext_resource type="PackedScene" uid="uid://06mbh0n70iq" path="res://inventory/items/polarized_orb_pickable.tscn" id="10_fd0es"]
 
 [sub_resource type="Resource" id="Resource_1svn6"]
 script = ExtResource("4_6meu1")
@@ -19,11 +20,11 @@ ease = 2
 [node name="Level03" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_s7mpb")]
-position = Vector2(2019, 137)
+position = Vector2(-74, 17)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(2019, 137)
+position = Vector2(-74, 17)
 zoom = Vector2(4, 4)
 process_callback = 0
 
@@ -34,7 +35,7 @@ script = ExtResource("2_au5fw")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2019, 137)
+position = Vector2(-74, 17)
 script = ExtResource("3_0ptx8")
 follow_mode = 5
 follow_target = NodePath("../Player")
@@ -79,13 +80,37 @@ animation = &"default"
 position = Vector2(1516, -96)
 polarity = 1
 
+[node name="PolarizedTile6" parent="." instance=ExtResource("7_8c00w")]
+position = Vector2(1572, 9)
+polarity = 2
+
+[node name="PolarizedTile7" parent="." instance=ExtResource("7_8c00w")]
+position = Vector2(1610, 67)
+polarity = 1
+
+[node name="PolarizedTile8" parent="." instance=ExtResource("7_8c00w")]
+position = Vector2(1675, 176)
+polarity = 2
+
+[node name="PolarizedTile9" parent="." instance=ExtResource("7_8c00w")]
+position = Vector2(1692, 212)
+polarity = 1
+
+[node name="PolarizedTile10" parent="." instance=ExtResource("7_8c00w")]
+position = Vector2(1768, 215)
+polarity = 1
+
+[node name="PolarizedTile11" parent="." instance=ExtResource("7_8c00w")]
+position = Vector2(1826, 126)
+polarity = 1
+
 [node name="PolarizedTile3" parent="." instance=ExtResource("7_8c00w")]
 position = Vector2(1645, 110)
-polarity = 1
+polarity = 2
 
 [node name="PolarizedTile4" parent="." instance=ExtResource("7_8c00w")]
 position = Vector2(1715, 250)
-polarity = 1
+polarity = 2
 
 [node name="Info02" parent="." instance=ExtResource("8_nl8sd")]
 position = Vector2(159, -14)
@@ -112,8 +137,8 @@ thought = true
 interrupt = true
 
 [node name="Info05" parent="." instance=ExtResource("8_nl8sd")]
-position = Vector2(1321, 31)
-messages = Array[String](["Yup, this looks very dangerous..."])
+position = Vector2(1316, 30)
+messages = Array[String](["My orb won't help me here."])
 char_speed = 0.05
 message_delay = 0.5
 thought = true
@@ -141,6 +166,12 @@ messages = Array[String](["Da..."])
 char_speed = 0.05
 message_delay = 0.5
 
+[node name="Info09" parent="." instance=ExtResource("8_nl8sd")]
+position = Vector2(1028, -176)
+messages = Array[String](["[Press Q to drop item]"])
+char_speed = 0.05
+message_delay = 0.5
+
 [node name="PolarizedTile5" parent="." instance=ExtResource("7_8c00w")]
 position = Vector2(1797, 169)
 polarity = 1
@@ -148,3 +179,6 @@ polarity = 1
 [node name="Door" parent="." instance=ExtResource("9_82dh1")]
 position = Vector2(2496, 154)
 scene = "res://scenes/level_final.tscn"
+
+[node name="PickableItem2" parent="." instance=ExtResource("10_fd0es")]
+position = Vector2(-56, 8)
