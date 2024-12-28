@@ -21,3 +21,5 @@ Theme: Polarity
 [Audacity](https://www.audacityteam.org/)
 
 [m3x6, a font by Daniel Linssen](https://managore.itch.io/m3x6)
+
+[Wind SFX from Pixabay by Fabrizio84 (Freesound)](https://pixabay.com/sound-effects/wind-artificial-18750/)

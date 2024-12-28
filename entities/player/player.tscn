@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://do5n61hi8wdrr"]
+[gd_scene load_steps=31 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_v821l"]
 [ext_resource type="Texture2D" uid="uid://bdyv2uisiksku" path="res://entities/player/gfx/player_model0000.png" id="2_eome6"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://vtcmrdkevstg" path="res://entities/player/sfx/type_04.mp3" id="22_611sg"]
 [ext_resource type="AudioStream" uid="uid://mneg3sbnisil" path="res://entities/player/sfx/type_05.mp3" id="23_fsuiq"]
 [ext_resource type="AudioStream" uid="uid://vt3i4hdteccb" path="res://entities/player/sfx/land.mp3" id="24_uospj"]
+[ext_resource type="AudioStream" uid="uid://cwmmyssvxwh5" path="res://entities/player/sfx/wind.mp3" id="25_k377y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw1q3"]
 size = Vector2(13, 16)
@@ -198,3 +199,8 @@ stream = ExtResource("16_hkmpj")
 
 [node name="SfxLand" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_uospj")
+
+[node name="SfxWind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_k377y")
+volume_db = -40.0
+autoplay = true

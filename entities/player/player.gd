@@ -135,3 +135,10 @@ func _physics_process(delta):
 		ref_player_sprite.flip_h = false
 	
 	move_and_slide()
+	
+	if not is_on_floor():
+		var speed = velocity.length() - 200
+		var f = clamp(speed / 1200, 0.0, 1.0)
+		$SfxWind.volume_db = -40 + f * 40
+	else:
+		$SfxWind.volume_db = lerp($SfxWind.volume_db, -40.0, delta)
