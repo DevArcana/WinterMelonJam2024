@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dk88hy50ypohu"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://si1ufw2ivdwj"]
 
 [ext_resource type="Texture2D" uid="uid://b1hdlqx788vjv" path="res://addons/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_transparent_packed.png" id="1_7lx4h"]
 [ext_resource type="Texture2D" uid="uid://ch25sihwskccl" path="res://terrain/snow-terrain-platforms-sprite-sheet.png" id="2_6vm4o"]
@@ -402,11 +402,8 @@ texture = ExtResource("1_7lx4h")
 3:9/0 = 0
 3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:9/0 = 0
-4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:9/0 = 0
-5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:9/0 = 0
-6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:9/0 = 0
 7:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:9/0 = 0
@@ -442,11 +439,8 @@ texture = ExtResource("1_7lx4h")
 3:10/0 = 0
 3:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:10/0 = 0
-4:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:10/0 = 0
-5:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:10/0 = 0
-6:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:10/0 = 0
 7:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:10/0 = 0

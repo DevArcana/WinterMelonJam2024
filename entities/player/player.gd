@@ -15,7 +15,10 @@ const GROUND_MAX_SPEED = 200.0
 const GROUND_ACCEL = 1200.0
 const GROUND_DECEL = 200.0
 const GROUND_FRICTION = 3.0
-const AIR_FRICTION = 0.5
+const AIR_MAX_SPEED = 100.0
+const AIR_ACCEL = 1200.0
+const AIR_DECEL = 300.0
+const AIR_FRICTION = 0.3
 const STEP_INTERVAL = 1.0
 
 func pick_up(item_scene: String):
@@ -27,7 +30,7 @@ func target_with_item(pos: Vector2):
 
 func _physics_ground(delta):
 	# Apply input
-	var speed = abs(velocity.x)
+	var speed = velocity.dot(Vector2(dir, 0))
 	var remaining = GROUND_MAX_SPEED - speed
 	if remaining > 0:
 		var dx = delta * GROUND_ACCEL
@@ -53,9 +56,16 @@ func _physics_air(delta):
 	# Apply gravity
 	velocity += get_gravity() * delta
 	
+	# Apply input
+	var speed = velocity.dot(Vector2(dir, 0))
+	var remaining = AIR_MAX_SPEED - speed
+	if remaining > 0:
+		var dx = delta * AIR_ACCEL
+		velocity.x += min(dx, remaining) * dir
+	
 	# Apply friction
-	var speed = velocity.length()
-	var drop = speed * AIR_FRICTION * delta
+	speed = velocity.length()
+	var drop = max(speed, AIR_DECEL) * AIR_FRICTION * delta
 	var new_speed = max(speed - drop, 0.0)
 	if speed > 0.0:
 		new_speed /= speed
