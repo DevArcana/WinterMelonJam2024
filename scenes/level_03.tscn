@@ -125,7 +125,7 @@ interrupt = true
 
 [node name="Info07" parent="." instance=ExtResource("8_nl8sd")]
 position = Vector2(1930, 380)
-messages = Array[String](["I should not land here...", "The exit is just above..."])
+messages = Array[String](["The exit is just above..."])
 char_speed = 0.05
 message_delay = 0.5
 thought = true
@@ -136,3 +136,7 @@ position = Vector2(1002, -1)
 messages = Array[String](["Da..."])
 char_speed = 0.05
 message_delay = 0.5
+
+[node name="PolarizedTile5" parent="." instance=ExtResource("7_8c00w")]
+position = Vector2(1797, 169)
+polarity = 1
