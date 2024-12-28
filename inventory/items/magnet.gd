@@ -54,8 +54,10 @@ func physics_tick(player: Player, delta: float) -> void:
 			var push = target.polarity == polarity
 			var diff = target_hit - player.global_position
 			var dir = diff.normalized()
-			var dist = diff.length()
-			var dv = dir * delta * 2000
+			var dist = diff.length_squared()
+			var loss = 1 - clamp(dist/50000, 0.0, 1.0)
+			var force = 2000 * loss
+			var dv = dir * delta * force
 			if push:
 				dv = -dv
 				$Sprite.play("push")
