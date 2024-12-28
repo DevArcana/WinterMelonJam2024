@@ -21,8 +21,12 @@ const AIR_DECEL = 300.0
 const AIR_FRICTION = 0.3
 const STEP_INTERVAL = 1.0
 
-func pick_up(item_scene: String):
+func pick_up(item_scene: String) -> bool:
+	if ref_held_item.get_child_count() > 0:
+		return false
+	
 	ref_held_item.add_child(load(item_scene).instantiate())
+	return true
 
 func target_with_item(pos: Vector2):
 	hand_rot_override = true
@@ -78,6 +82,8 @@ func _physics_process(delta):
 	if ref_held_item.get_child_count() > 0:
 		var held_item = ref_held_item.get_child(0) as Item
 		if held_item:
+			if Input.is_action_just_pressed("drop_item"):
+				held_item.drop(self)
 			if Input.is_action_just_pressed("fire_primary"):
 				held_item.left_mouse_button_pressed(self)
 			if Input.is_action_just_pressed("fire_secondary"):

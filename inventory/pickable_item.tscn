@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctqdv1h4p6vkc"]
+[gd_scene load_steps=9 format=3 uid="uid://ctqdv1h4p6vkc"]
 
 [ext_resource type="Texture2D" uid="uid://bn7lgy730mmwy" path="res://entities/player/gfx/magnet0000.png" id="1_5kshh"]
 [ext_resource type="Script" path="res://inventory/pickable_item.gd" id="2_7b4vk"]
 [ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="3_ghw5f"]
+[ext_resource type="AudioStream" uid="uid://5ia24b8y8387" path="res://entities/player/sfx/interaction_fail.mp3" id="4_7f5kc"]
+[ext_resource type="AudioStream" uid="uid://bhlfuw5mb7wwy" path="res://entities/player/sfx/interaction_success.mp3" id="5_rurk4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ca0x8"]
 animations = [{
@@ -46,6 +48,12 @@ E
 to pick up..."
 label_settings = SubResource("LabelSettings_oxvqp")
 horizontal_alignment = 1
+
+[node name="SfxFail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7f5kc")
+
+[node name="SfxSuccess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rurk4")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
