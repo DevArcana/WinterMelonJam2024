@@ -1,13 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cixwciokst3p1"]
+[gd_scene load_steps=12 format=3 uid="uid://c1xwlmd65mc7f"]
 
 [ext_resource type="Script" path="res://inventory/items/polarized_orb.gd" id="1_8xk1t"]
-[ext_resource type="Texture2D" uid="uid://bn7lgy730mmwy" path="res://entities/player/gfx/magnet0000.png" id="2_7jfnl"]
-[ext_resource type="PackedScene" uid="uid://06mbh0n70iq" path="res://inventory/items/polarized_orb_pickable.tscn" id="2_it518"]
-[ext_resource type="Texture2D" uid="uid://omxw4e31x0bj" path="res://entities/player/gfx/magnet0006.png" id="3_sunjn"]
-[ext_resource type="Texture2D" uid="uid://dbmblo66rhnuk" path="res://entities/player/gfx/magnet0005.png" id="4_hor2l"]
-[ext_resource type="Texture2D" uid="uid://ucs3emas0h22" path="res://entities/player/gfx/magnet0004.png" id="5_pprrc"]
-[ext_resource type="Texture2D" uid="uid://c6qqbs6f5d3bx" path="res://entities/player/gfx/magnet0003.png" id="6_p7amd"]
-[ext_resource type="Texture2D" uid="uid://cdy5htumogsle" path="res://entities/player/gfx/magnet0002.png" id="7_7vohb"]
+[ext_resource type="PackedScene" uid="uid://byvs47fklqc7a" path="res://inventory/items/polarized_orb_pickable.tscn" id="2_it518"]
+[ext_resource type="Texture2D" uid="uid://dmhuifwlh0460" path="res://entities/player/gfx/magnet-orb0001.png" id="4_k3hx8"]
+[ext_resource type="Texture2D" uid="uid://bo0p5lw0yx5vs" path="res://entities/player/gfx/magnet-orb0002.png" id="5_ux6cw"]
+[ext_resource type="Texture2D" uid="uid://bakollsy64ycl" path="res://entities/player/gfx/magnet-orb0003.png" id="6_7je1b"]
 [ext_resource type="Texture2D" uid="uid://d3eilrpjaxkr7" path="res://entities/player/gfx/magnet0001.png" id="8_c1w6v"]
 [ext_resource type="AudioStream" uid="uid://di00kj02yl8mn" path="res://entities/player/sfx/effect.mp3" id="9_5r2pu"]
 [ext_resource type="Script" path="res://scripts/follow.gd" id="10_t3rm8"]
@@ -16,7 +13,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7jfnl")
+"texture": ExtResource("8_c1w6v")
 }],
 "loop": true,
 "name": &"default",
@@ -24,22 +21,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sunjn")
+"texture": ExtResource("4_k3hx8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_hor2l")
+"texture": ExtResource("5_ux6cw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_pprrc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_p7amd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_7vohb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_c1w6v")
+"texture": ExtResource("6_7je1b")
 }],
 "loop": true,
 "name": &"pull",
@@ -47,22 +35,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_c1w6v")
+"texture": ExtResource("4_k3hx8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_7vohb")
+"texture": ExtResource("5_ux6cw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_p7amd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_pprrc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_hor2l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_sunjn")
+"texture": ExtResource("6_7je1b")
 }],
 "loop": true,
 "name": &"push",
@@ -90,6 +69,8 @@ pickable_item = ExtResource("2_it518")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(11, 0)
 sprite_frames = SubResource("SpriteFrames_8mgec")
+animation = &"pull"
+frame_progress = 0.372257
 speed_scale = 2.0
 
 [node name="SfxMagnet" type="AudioStreamPlayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://nksaj4jyq2v4"]
+[gd_scene load_steps=11 format=4 uid="uid://cn25dyl2ubhsx"]
 
 [ext_resource type="PackedScene" uid="uid://do5n61hi8wdrr" path="res://entities/player/player.tscn" id="1_88pv8"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_le2eg"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ctqdv1h4p6vkc" path="res://inventory/pickable_item.tscn" id="6_5si52"]
 [ext_resource type="PackedScene" uid="uid://dmxk2xvuiilyr" path="res://entities/magnetism/polarized_tile.tscn" id="7_cfotd"]
 [ext_resource type="PackedScene" uid="uid://c7e831sasvqew" path="res://entities/message_area/message_area.tscn" id="8_5pl7w"]
-[ext_resource type="PackedScene" uid="uid://06mbh0n70iq" path="res://inventory/items/polarized_orb_pickable.tscn" id="9_slu7c"]
+[ext_resource type="PackedScene" uid="uid://byvs47fklqc7a" path="res://inventory/items/polarized_orb_pickable.tscn" id="9_slu7c"]
 
 [sub_resource type="Resource" id="Resource_1svn6"]
 script = ExtResource("4_e0h6g")
@@ -73,6 +73,7 @@ collision_enabled = false
 
 [node name="PickableItem" parent="." instance=ExtResource("6_5si52")]
 position = Vector2(1122, -155)
+animation = &"default"
 
 [node name="PolarizedTile2" parent="." instance=ExtResource("7_cfotd")]
 position = Vector2(1516, -96)
