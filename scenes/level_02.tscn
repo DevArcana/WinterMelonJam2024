@@ -63,4 +63,4 @@ position = Vector2(73, 757)
 
 [node name="Door" parent="." instance=ExtResource("10_ckf5w")]
 position = Vector2(1455, 761)
-scene = "res://scenes/level_01.tscn"
+scene = "res://scenes/level_02.tscn"
