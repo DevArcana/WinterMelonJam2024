@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://do5n61hi8wdrr"]
+[gd_scene load_steps=30 format=3 uid="uid://do5n61hi8wdrr"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_v821l"]
 [ext_resource type="Texture2D" uid="uid://bdyv2uisiksku" path="res://entities/player/gfx/player_model0000.png" id="2_eome6"]
@@ -18,6 +18,12 @@
 [ext_resource type="Script" path="res://entities/player/thoughts_consumer.gd" id="14_vtw4s"]
 [ext_resource type="AudioStream" uid="uid://b46xuubge20kt" path="res://entities/player/sfx/hop.mp3" id="15_kig86"]
 [ext_resource type="AudioStream" uid="uid://cgn3vjov5ld26" path="res://entities/player/sfx/step.mp3" id="16_hkmpj"]
+[ext_resource type="AudioStream" uid="uid://dhu5l2afrbm2v" path="res://entities/player/sfx/type_01.mp3" id="19_hncgs"]
+[ext_resource type="AudioStream" uid="uid://ct3oqnocmm6yp" path="res://entities/player/sfx/type_02.mp3" id="20_q0m81"]
+[ext_resource type="AudioStream" uid="uid://bi52g0namhyx3" path="res://entities/player/sfx/type_03.mp3" id="21_lrq6t"]
+[ext_resource type="AudioStream" uid="uid://vtcmrdkevstg" path="res://entities/player/sfx/type_04.mp3" id="22_611sg"]
+[ext_resource type="AudioStream" uid="uid://mneg3sbnisil" path="res://entities/player/sfx/type_05.mp3" id="23_fsuiq"]
+[ext_resource type="AudioStream" uid="uid://vt3i4hdteccb" path="res://entities/player/sfx/land.mp3" id="24_uospj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tw1q3"]
 size = Vector2(13, 16)
@@ -113,6 +119,15 @@ font = ExtResource("14_swybl")
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y04w6"]
+random_pitch = 1.2
+streams_count = 5
+stream_0/stream = ExtResource("19_hncgs")
+stream_1/stream = ExtResource("20_q0m81")
+stream_2/stream = ExtResource("21_lrq6t")
+stream_3/stream = ExtResource("22_611sg")
+stream_4/stream = ExtResource("23_fsuiq")
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 5
@@ -169,6 +184,9 @@ size_flags_horizontal = 4
 text = "This is a thought."
 label_settings = SubResource("LabelSettings_x6d5n")
 
+[node name="SfxType" type="AudioStreamPlayer" parent="Control"]
+stream = SubResource("AudioStreamRandomizer_y04w6")
+
 [node name="SfxMagnet" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_56y3o")
 
@@ -177,3 +195,6 @@ stream = ExtResource("15_kig86")
 
 [node name="SfxWalk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_hkmpj")
+
+[node name="SfxLand" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_uospj")

@@ -7,7 +7,7 @@ var waiting: bool = false
 var current_msg: String = ""
 var char_index: int = 0
 
-const CHAR_TIME: float = 0.03
+const CHAR_TIME: float = 0.05
 const MSG_TIME: float = 1.0
 
 func _ready():
@@ -44,6 +44,7 @@ func _physics_process(delta):
 			waiting = true
 			return
 			
+		$SfxType.play()
 		var char = current_msg[char_index]
 		if char == "\\" and current_msg[char_index + 1] == "n":
 			char_index += 2

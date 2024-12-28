@@ -10,6 +10,7 @@ var magnet_mode : Magnetism.Polarity = Magnetism.Polarity.INERT
 var magnet_target : Vector2 = Vector2.ZERO
 var magnet_push : bool = false
 var step_timer = 0.0
+var was_on_floor = false
 
 const EPSILON = 0.001
 const JUMP_VELOCITY = 400.0
@@ -90,6 +91,10 @@ func _physics_process(delta):
 	dir = Input.get_axis("left", "right")
 	
 	if is_on_floor():
+		if not was_on_floor:
+			was_on_floor = true
+			$SfxLand.play()
+		
 		if velocity.y >= 0.0 and Input.is_action_just_pressed("jump"):
 			velocity.y -= JUMP_VELOCITY
 			$SfxJump.play()
@@ -97,6 +102,7 @@ func _physics_process(delta):
 		_physics_ground(delta)
 	else:
 		_physics_air(delta)
+		was_on_floor = false
 		
 	if magnet_mode == Magnetism.Polarity.INERT:
 		ref_magnet.look_at(get_global_mouse_position())

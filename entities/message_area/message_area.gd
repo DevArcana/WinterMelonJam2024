@@ -60,6 +60,7 @@ func _physics_process(delta):
 			waiting = true
 			return
 		
+		$SfxType.play()
 		var char = message[current_char_index]
 		if char == "\\" and message[current_char_index + 1] == "n":
 			current_char_index += 2

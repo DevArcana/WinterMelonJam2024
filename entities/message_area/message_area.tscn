@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7e831sasvqew"]
+[gd_scene load_steps=11 format=3 uid="uid://c7e831sasvqew"]
 
 [ext_resource type="Script" path="res://entities/message_area/message_area.gd" id="1_7denr"]
 [ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="2_m24nu"]
+[ext_resource type="AudioStream" uid="uid://dhu5l2afrbm2v" path="res://entities/player/sfx/type_01.mp3" id="3_asqaa"]
+[ext_resource type="AudioStream" uid="uid://ct3oqnocmm6yp" path="res://entities/player/sfx/type_02.mp3" id="4_t4hs0"]
+[ext_resource type="AudioStream" uid="uid://bi52g0namhyx3" path="res://entities/player/sfx/type_03.mp3" id="5_ihyvw"]
+[ext_resource type="AudioStream" uid="uid://vtcmrdkevstg" path="res://entities/player/sfx/type_04.mp3" id="6_dpgbv"]
+[ext_resource type="AudioStream" uid="uid://mneg3sbnisil" path="res://entities/player/sfx/type_05.mp3" id="7_o2088"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ajko"]
 size = Vector2(64, 64)
@@ -11,6 +16,15 @@ line_spacing = -4.0
 font = ExtResource("2_m24nu")
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_udvot"]
+random_pitch = 1.2
+streams_count = 5
+stream_0/stream = ExtResource("3_asqaa")
+stream_1/stream = ExtResource("4_t4hs0")
+stream_2/stream = ExtResource("5_ihyvw")
+stream_3/stream = ExtResource("6_dpgbv")
+stream_4/stream = ExtResource("7_o2088")
 
 [node name="TipArea" type="Area2D"]
 collision_layer = 4
@@ -48,5 +62,8 @@ grow_vertical = 0
 size_flags_horizontal = 4
 text = "[Info Zone]"
 label_settings = SubResource("LabelSettings_gtco3")
+
+[node name="SfxType" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_udvot")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
