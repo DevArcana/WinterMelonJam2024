@@ -3,5 +3,4 @@
 [ext_resource type="PackedScene" uid="uid://ctqdv1h4p6vkc" path="res://inventory/pickable_item.tscn" id="1_dywt8"]
 
 [node name="PickableItem" instance=ExtResource("1_dywt8")]
-animation = &"default_orb"
 item_scene = "res://inventory/items/polarized_orb.tscn"
