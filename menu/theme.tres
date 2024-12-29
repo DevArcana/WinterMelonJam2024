@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bddl4w76fldi4"]
+
+[ext_resource type="FontFile" uid="uid://cmkvmvjvwur11" path="res://addons/m3x6/m3x6.ttf" id="1_upkvi"]
+
+[resource]
+default_font = ExtResource("1_upkvi")
+default_font_size = 64

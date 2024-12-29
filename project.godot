@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Winter Melon Jam 2024"
-run/main_scene="res://scenes/menu.tscn"
+run/main_scene="res://menu/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Thoughts="*res://entities/player/thoughts.gd"
+MenuManager="*res://menu/menu_manager.gd"
 
 [display]
 
@@ -32,6 +33,10 @@ enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 [global_group]
 
 player="Group for the player entity."
+
+[gui]
+
+theme/custom="res://menu/theme.tres"
 
 [input]
 
