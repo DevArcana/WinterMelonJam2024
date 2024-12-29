@@ -269,185 +269,154 @@ metadata/_edit_group_ = true
 [node name="PolarizedTile42" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(-1, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile43" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(17, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile44" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(35, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile45" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(53, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile46" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(71, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile47" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(89, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile48" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(107, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile49" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(125, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile50" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(143, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile51" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(161, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile52" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(179, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile53" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(197, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile54" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(215, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile55" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(233, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile56" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(251, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile57" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(269, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile58" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(287, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile59" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(305, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile60" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(323, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile61" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(341, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile62" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(359, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile63" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(377, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile64" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(395, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile65" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(413, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile66" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(431, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile67" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(449, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile68" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(467, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile69" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(485, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2
 
 [node name="PolarizedTile70" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(503, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile71" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(539, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 1
 
 [node name="PolarizedTile72" parent="Node2D2" instance=ExtResource("7_yy65g")]
 position = Vector2(521, -1)
 rotation = 0.785398
-scale = Vector2(1, 1)
 polarity = 2

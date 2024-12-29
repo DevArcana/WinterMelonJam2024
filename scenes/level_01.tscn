@@ -77,6 +77,12 @@ char_speed = 0.05
 message_delay = 0.5
 thought = true
 
+[node name="Info08" parent="." instance=ExtResource("6_mb5ut")]
+position = Vector2(91, 736)
+messages = Array[String](["[Game Info]\\nThere are 5 levels.\\nIf you get too frustrated you can skip it in Escape menu.\\nYou need to be creative and have good dexterity."])
+char_speed = 0.05
+message_delay = 0.5
+
 [node name="Info02" parent="." instance=ExtResource("6_mb5ut")]
 position = Vector2(-864, 736)
 messages = Array[String](["There's nothing here.", "I better go back and try the other way.", "I remember seeing a sign there..."])

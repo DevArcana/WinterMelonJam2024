@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Thoughts="*res://entities/player/thoughts.gd"
 MenuManager="*res://menu/menu_manager.gd"
+Preloader="*res://scenes/preloader.tscn"
 
 [display]
 
