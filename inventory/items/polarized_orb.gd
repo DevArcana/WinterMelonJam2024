@@ -49,7 +49,6 @@ func right_mouse_button_released(player: Player) -> void:
 		_set_polarity(Magnetism.Polarity.INERT)
 
 func physics_tick(player: Player, delta: float) -> void:	
-	DebugDraw2D.set_text("in range", len(range))
 	if len(range) > 0 and polarity != Magnetism.Polarity.INERT:
 		var v = Vector2.ZERO
 		for polarized in range:
