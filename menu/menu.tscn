@@ -36,9 +36,16 @@ layout_mode = 2
 theme = ExtResource("2_07vep")
 text = "Start"
 
+[node name="Skip" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_07vep")
+text = "Skip This Level"
+
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Skip" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
