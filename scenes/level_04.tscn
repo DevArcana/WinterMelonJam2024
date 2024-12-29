@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dc6exsdls64jm"]
+[gd_scene load_steps=12 format=4 uid="uid://b5m5iwkbw82k3"]
 
 [ext_resource type="PackedScene" uid="uid://do5n61hi8wdrr" path="res://entities/player/player.tscn" id="1_t86tq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_2a821"]
@@ -243,7 +243,7 @@ polarity = 2
 
 [node name="Info01" parent="." instance=ExtResource("10_upetn")]
 position = Vector2(-2, 127)
-messages = Array[String](["I think i should go left here..."])
+messages = Array[String](["I think I should go left here..."])
 char_speed = 0.05
 message_delay = 0.5
 thought = true
