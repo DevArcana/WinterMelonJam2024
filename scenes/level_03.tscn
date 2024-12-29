@@ -178,7 +178,7 @@ polarity = 1
 
 [node name="Door" parent="." instance=ExtResource("9_82dh1")]
 position = Vector2(2496, 154)
-scene = "res://scenes/level_final.tscn"
+scene = "res://scenes/level_04.tscn"
 
 [node name="PickableItem2" parent="." instance=ExtResource("10_fd0es")]
 position = Vector2(-56, 8)
